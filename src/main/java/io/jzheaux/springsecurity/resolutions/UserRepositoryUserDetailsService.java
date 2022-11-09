@@ -42,18 +42,22 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
             this.authorities = authorities;
         }
 
+        @Override
         public Collection<? extends GrantedAuthority> getAuthorities(){
             return this.authorities;
         }
 
+        @Override
         public boolean isAccountNonExpired() {
             return this.enabled;
         }
 
+        @Override
         public boolean isAccountNonLocked() {
             return this.enabled;
         }
 
+        @Override
         public boolean isCredentialsNonExpired() {
             return this.enabled;
         }
