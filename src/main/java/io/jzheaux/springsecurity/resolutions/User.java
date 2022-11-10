@@ -24,6 +24,9 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     Collection<UserAuthority> userAuthorities = new ArrayList<>();
 
+    @Column(name = "full_name")
+    String fullName;
+
     User(){}
 
     public User(String username, String password){
@@ -38,6 +41,7 @@ public class User implements Serializable {
         this.password = user.password;
         this.enabled = user.enabled;
         this.userAuthorities = user.userAuthorities;
+        this.fullName = user.fullName;
     }
 
     public UUID getId() {
@@ -79,5 +83,13 @@ public class User implements Serializable {
     public void grantAuthority(String authority){
         UserAuthority userAuthority = new UserAuthority(this, authority);
         this.userAuthorities.add(userAuthority);
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }
